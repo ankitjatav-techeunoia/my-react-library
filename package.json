@@ -3,28 +3,40 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@babel/core": "^7.26.7",
     "@babel/preset-env": "^7.26.7",
     "@babel/preset-react": "^7.26.3",
+    "@chromatic-com/storybook": "^3.2.4",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
+    "@storybook/addon-essentials": "^8.5.3",
+    "@storybook/addon-interactions": "^8.5.3",
+    "@storybook/addon-onboarding": "^8.5.3",
+    "@storybook/blocks": "^8.5.3",
+    "@storybook/react": "^8.5.3",
+    "@storybook/react-vite": "^8.5.3",
+    "@storybook/test": "^8.5.3",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1",
+    "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rollup": "^2.79.2",
     "rollup-plugin-babel": "^4.4.0",
+    "storybook": "^8.5.3",
     "tailwindcss": "^4.0.4"
   },
   "dependencies": {
     "styled-components": "^6.1.15"
-  }
+  },
+  "description": ""
 }
