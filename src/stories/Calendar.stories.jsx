@@ -1,4 +1,3 @@
-// stories/Calendar.stories.jsx
 import React, { useState } from "react";
 import Calendar from "../components/Calendar";
 
@@ -15,16 +14,17 @@ export default {
   },
 };
 
+// ✅ Reusable Template for Stories
 const Template = (args) => {
   const [date, setDate] = useState("");
 
   return <Calendar {...args} value={date} onChange={setDate} />;
 };
 
-// ✅ **Fix: Rename Default Exports**
-export const DefaultCalendar = Template.bind({});
-DefaultCalendar.args = {
-  width: "80px",
+// ✅ Basic Calendar (Renamed from DefaultCalendar)
+export const BasicCalendar = Template.bind({});
+BasicCalendar.args = {
+  width: "280px",
   padding: "12px 16px",
   borderRadius: "8px",
   bgColor: "white",
@@ -32,12 +32,13 @@ DefaultCalendar.args = {
   fontSize: "16px",
 };
 
-export const CalendarWithCustomStyle = Template.bind({});
-CalendarWithCustomStyle.args = {
-  width: "30px",
+// ✅ Custom Styled Calendar
+export const CustomStyledCalendar = Template.bind({});
+CustomStyledCalendar.args = {
+  width: "320px",
   padding: "14px 18px",
-  borderRadius: "10px",
-  bgColor: "#f5f5f5",
-  textColor: "#444",
+  borderRadius: "12px",
+  bgColor: "#f3f3f3",
+  textColor: "#111",
   fontSize: "18px",
 };

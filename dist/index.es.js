@@ -1,12 +1,101 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+function _arrayWithHoles(r) {
+  if (Array.isArray(r)) return r;
+}
+function _arrayWithoutHoles(r) {
+  if (Array.isArray(r)) return _arrayLikeToArray(r);
+}
+function _extends() {
+  return _extends = Object.assign ? Object.assign.bind() : function (n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+    }
+    return n;
+  }, _extends.apply(null, arguments);
+}
+function _iterableToArray(r) {
+  if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
+}
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
+    } finally {
+      try {
+        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _objectWithoutProperties(e, t) {
+  if (null == e) return {};
+  var o,
+    r,
+    i = _objectWithoutPropertiesLoose(e, t);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e);
+    for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
+  }
+  return i;
+}
+function _objectWithoutPropertiesLoose(r, e) {
+  if (null == r) return {};
+  var t = {};
+  for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
+    if (-1 !== e.indexOf(n)) continue;
+    t[n] = r[n];
+  }
+  return t;
+}
+function _slicedToArray(r, e) {
+  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+}
 function _taggedTemplateLiteral(e, t) {
   return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, {
     raw: {
       value: Object.freeze(t)
     }
   }));
+}
+function _toConsumableArray(r) {
+  return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread();
+}
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
 }
 
 function getDefaultExportFromCjs (x) {
@@ -1203,17 +1292,17 @@ function requirePropTypes () {
 var propTypesExports = /*@__PURE__*/ requirePropTypes();
 var PropTypes = /*@__PURE__*/getDefaultExportFromCjs(propTypesExports);
 
-var _templateObject;
+var _templateObject$3;
 
 // ✅ Styled Button Component
-var StyledButton = styled.button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  padding: 10px 20px;\n  border-radius: 8px;\n  font-weight: bold;\n  border: none;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n  \n  /* Dynamic Props Based Styling */\n  background-color: ", ";\n  color: white;\n  \n  &:hover {\n    opacity: 0.8;\n  }\n"])), function (props) {
+var StyledButton$1 = styled.button(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  padding: 10px 20px;\n  border-radius: 8px;\n  font-weight: bold;\n  border: none;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n  \n  /* Dynamic Props Based Styling */\n  background-color: ", ";\n  color: white;\n  \n  &:hover {\n    opacity: 0.8;\n  }\n"])), function (props) {
   return props.variant === "primary" ? "#007bff" : props.variant === "secondary" ? "#6c757d" : "#dc3545";
 });
 var Button = function Button(_ref) {
   var text = _ref.text,
     variant = _ref.variant,
     onClick = _ref.onClick;
-  return /*#__PURE__*/React.createElement(StyledButton, {
+  return /*#__PURE__*/React.createElement(StyledButton$1, {
     variant: variant,
     onClick: onClick
   }, text);
@@ -1235,5 +1324,243 @@ Button.defaultProps = {
   }
 };
 
-export { Button };
+var _excluded$2 = ["text", "variant", "onClick", "prefixIcon", "suffixIcon"];
+var _templateObject$2;
+
+// ✅ Styled Button Component
+var StyledButton = styled.button(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: ", ";\n  padding: ", ";\n  border-radius: ", ";\n  font-weight: bold;\n  border: none;\n  cursor: pointer;\n  transition: all 0.2s ease-in-out;\n\n  background-color: ", ";\n  color: ", ";\n\n  &:hover {\n    opacity: 0.8;\n  }\n  \n  svg {\n    width: ", ";\n    height: ", ";\n  }\n"])), function (props) {
+  return props.gap || "8px";
+}, function (props) {
+  return props.padding || "10px 16px";
+}, function (props) {
+  return props.borderRadius || "8px";
+}, function (props) {
+  return props.variant === "primary" ? "#007bff" : props.variant === "secondary" ? "#6c757d" : "#dc3545";
+}, function (props) {
+  return props.textColor || "white";
+}, function (props) {
+  return props.iconSize || "18px";
+}, function (props) {
+  return props.iconSize || "18px";
+});
+var IconButton = function IconButton(_ref) {
+  var text = _ref.text,
+    variant = _ref.variant,
+    onClick = _ref.onClick,
+    prefixIcon = _ref.prefixIcon,
+    suffixIcon = _ref.suffixIcon,
+    props = _objectWithoutProperties(_ref, _excluded$2);
+  return /*#__PURE__*/React.createElement(StyledButton, _extends({
+    variant: variant,
+    onClick: onClick
+  }, props), prefixIcon && /*#__PURE__*/React.createElement("span", null, prefixIcon), text, suffixIcon && /*#__PURE__*/React.createElement("span", null, suffixIcon));
+};
+
+// ✅ PropTypes Validation
+IconButton.propTypes = {
+  text: PropTypes.string,
+  variant: PropTypes.oneOf(["primary", "secondary", "danger"]),
+  onClick: PropTypes.func,
+  prefixIcon: PropTypes.element,
+  suffixIcon: PropTypes.element,
+  padding: PropTypes.string,
+  borderRadius: PropTypes.string,
+  textColor: PropTypes.string,
+  iconSize: PropTypes.string,
+  gap: PropTypes.string
+};
+
+// ✅ Default Props
+IconButton.defaultProps = {
+  text: "Click Me",
+  variant: "primary",
+  onClick: function onClick() {
+    return alert("Button Clicked!");
+  },
+  prefixIcon: null,
+  suffixIcon: null,
+  padding: "10px 16px",
+  borderRadius: "8px",
+  textColor: "white",
+  iconSize: "18px",
+  gap: "8px"
+};
+
+var _excluded$1 = ["options", "onChange", "selectedValue"];
+var _templateObject$1;
+
+// ✅ Styled Dropdown
+var SelectWrapper$1 = styled.select(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n  width: ", ";\n  padding: ", ";\n  border: 1px solid #ccc;\n  border-radius: ", ";\n  background-color: ", ";\n  color: ", ";\n  font-size: ", ";\n  cursor: pointer;\n\n  &:focus {\n    outline: none;\n    border-color: #007bff;\n  }\n"])), function (props) {
+  return props.width || "200px";
+}, function (props) {
+  return props.padding || "8px 12px";
+}, function (props) {
+  return props.borderRadius || "6px";
+}, function (props) {
+  return props.bgColor || "white";
+}, function (props) {
+  return props.textColor || "#333";
+}, function (props) {
+  return props.fontSize || "16px";
+});
+var Dropdown = function Dropdown(_ref) {
+  var options = _ref.options,
+    _onChange = _ref.onChange,
+    selectedValue = _ref.selectedValue,
+    props = _objectWithoutProperties(_ref, _excluded$1);
+  return /*#__PURE__*/React.createElement(SelectWrapper$1, _extends({
+    onChange: function onChange(e) {
+      return _onChange(e.target.value);
+    },
+    value: selectedValue
+  }, props), options.map(function (option) {
+    return /*#__PURE__*/React.createElement("option", {
+      key: option.id,
+      value: option.value
+    }, option.value);
+  }));
+};
+
+// ✅ PropTypes Validation
+Dropdown.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired
+  })).isRequired,
+  onChange: PropTypes.func.isRequired,
+  selectedValue: PropTypes.string,
+  width: PropTypes.string,
+  padding: PropTypes.string,
+  borderRadius: PropTypes.string,
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string,
+  fontSize: PropTypes.string
+};
+
+// ✅ Default Props
+Dropdown.defaultProps = {
+  options: [],
+  onChange: function onChange() {},
+  selectedValue: "",
+  width: "200px",
+  padding: "8px 12px",
+  borderRadius: "6px",
+  bgColor: "white",
+  textColor: "#333",
+  fontSize: "16px"
+};
+
+var _excluded = ["options", "onChange", "width"];
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+
+// ✅ Styled Dropdown Wrapper
+var SelectWrapper = styled.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  width: ", ";\n  position: relative;\n  font-size: ", ";\n"])), function (props) {
+  return props.width || "220px";
+}, function (props) {
+  return props.fontSize || "16px";
+});
+
+// ✅ Styled Select Box
+var StyledSelect = styled.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  padding: ", ";\n  border: 1px solid #ccc;\n  border-radius: ", ";\n  background-color: ", ";\n  color: ", ";\n  cursor: pointer;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n\n  &:hover {\n    border-color: #007bff;\n  }\n"])), function (props) {
+  return props.padding || "10px 12px";
+}, function (props) {
+  return props.borderRadius || "6px";
+}, function (props) {
+  return props.bgColor || "white";
+}, function (props) {
+  return props.textColor || "#333";
+});
+
+// ✅ Styled Options List
+var OptionsList = styled.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  position: absolute;\n  top: 100%;\n  left: 0;\n  width: 100%;\n  background: white;\n  border: 1px solid #ccc;\n  border-radius: 6px;\n  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);\n  max-height: 200px;\n  overflow-y: auto;\n  z-index: 10;\n"])));
+
+// ✅ Styled Option
+var Option = styled.div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n  padding: 8px 12px;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  background: ", ";\n  color: ", ";\n\n  &:hover {\n    background: #007bff;\n    color: white;\n  }\n"])), function (props) {
+  return props.selected ? "#007bff" : "white";
+}, function (props) {
+  return props.selected ? "white" : "#333";
+});
+
+// ✅ Multi-Select Dropdown Component
+var MultiSelectDropdown = function MultiSelectDropdown(_ref) {
+  var options = _ref.options,
+    onChange = _ref.onChange,
+    width = _ref.width,
+    props = _objectWithoutProperties(_ref, _excluded);
+  var _useState = useState([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    selectedIds = _useState2[0],
+    setSelectedIds = _useState2[1];
+  var _useState3 = useState(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isOpen = _useState4[0],
+    setIsOpen = _useState4[1];
+
+  // ✅ Handle Selection
+  var handleSelect = function handleSelect(id) {
+    var updatedSelection;
+    if (selectedIds.includes(id)) {
+      updatedSelection = selectedIds.filter(function (selectedId) {
+        return selectedId !== id;
+      });
+    } else {
+      updatedSelection = [].concat(_toConsumableArray(selectedIds), [id]);
+    }
+    setSelectedIds(updatedSelection);
+    onChange(updatedSelection); // Return selected IDs
+    console.log("Selected IDs:", updatedSelection);
+  };
+  return /*#__PURE__*/React.createElement(SelectWrapper, _extends({
+    width: width
+  }, props), /*#__PURE__*/React.createElement(StyledSelect, {
+    onClick: function onClick() {
+      return setIsOpen(!isOpen);
+    }
+  }, selectedIds.length > 0 ? options.filter(function (option) {
+    return selectedIds.includes(option.id);
+  }).map(function (option) {
+    return option.value;
+  }).join(", ") : "Select options", /*#__PURE__*/React.createElement("span", null, "\u25BC")), isOpen && /*#__PURE__*/React.createElement(OptionsList, null, options.map(function (option) {
+    return /*#__PURE__*/React.createElement(Option, {
+      key: option.id,
+      selected: selectedIds.includes(option.id),
+      onClick: function onClick() {
+        return handleSelect(option.id);
+      }
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "checkbox",
+      checked: selectedIds.includes(option.id),
+      readOnly: true
+    }), option.value);
+  })));
+};
+
+// ✅ PropTypes Validation
+MultiSelectDropdown.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired
+  })).isRequired,
+  onChange: PropTypes.func.isRequired,
+  width: PropTypes.string,
+  padding: PropTypes.string,
+  borderRadius: PropTypes.string,
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string,
+  fontSize: PropTypes.string
+};
+
+// ✅ Default Props
+MultiSelectDropdown.defaultProps = {
+  options: [],
+  onChange: function onChange() {},
+  width: "220px",
+  padding: "10px 12px",
+  borderRadius: "6px",
+  bgColor: "white",
+  textColor: "#333",
+  fontSize: "16px"
+};
+
+export { Button, Dropdown, IconButton, MultiSelectDropdown };
 //# sourceMappingURL=index.es.js.map
